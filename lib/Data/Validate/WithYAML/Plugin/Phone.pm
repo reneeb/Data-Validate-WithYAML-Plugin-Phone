@@ -5,9 +5,7 @@ use strict;
 
 use Carp;
 
-=head1 NAME
-
-Data::Validate::WithYAML::Plugin::Phone - Plugin to check Phone numbers
+# ABSTRACT: Plugin to check Phone numbers (basic check)
 
 =head1 VERSION
 
