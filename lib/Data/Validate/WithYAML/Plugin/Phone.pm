@@ -7,7 +7,7 @@ use Carp;
 
 # ABSTRACT: Plugin to check Phone numbers (basic check)
 
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 
 =head1 SYNOPSIS
 
