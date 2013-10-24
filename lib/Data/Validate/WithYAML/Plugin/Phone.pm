@@ -7,13 +7,7 @@ use Carp;
 
 # ABSTRACT: Plugin to check Phone numbers (basic check)
 
-=head1 VERSION
-
-Version 0.01
-
-=cut
-
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 =head1 SYNOPSIS
 
@@ -51,31 +45,12 @@ sub check {
     croak "no value to check" unless defined $value;
     
     my $return = 0;
-    if( $value =~ m{\A (?: \+ | 00? ) [1-9] [0-9]{7,} \z}x ){
+    $value =~ s/\s//g;
+    if( $value =~ m{\A (?: \+ | 00? ) [1-9]{2,6} [/-]? [0-9]{4,12} \z}x ){
         $return = 1;
     }
+    
     return $return;
 }
-
-=head1 AUTHOR
-
-Renee Baecker, C<< <module at renee-baecker.de> >>
-
-=head1 SUPPORT
-
-You can find documentation for this module with the perldoc command.
-
-    perldoc Data::Validate::WithYAML::Plugin::Phone
-
-=head1 ACKNOWLEDGEMENTS
-
-=head1 COPYRIGHT & LICENSE
-
-Copyright 2011 Renee Baecker, all rights reserved.
-
-This program is free software; you can redistribute it and/or modify it
-under the same terms as Perl itself.
-
-=cut
 
 1;
