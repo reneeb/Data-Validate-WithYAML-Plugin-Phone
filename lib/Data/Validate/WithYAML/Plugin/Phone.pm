@@ -7,7 +7,7 @@ use Carp;
 
 # ABSTRACT: Plugin to check Phone numbers (basic check)
 
-our $VERSION = '0.03';
+our $VERSION = '0.04';
 
 =head1 SYNOPSIS
 
@@ -46,7 +46,7 @@ sub check {
     
     my $return = 0;
     $value =~ s/\s//g;
-    if( $value =~ m{\A (?: \+ | 00? ) [1-9]{2,6} [/-]? [0-9]{4,12} \z}x ){
+    if( $value =~ m{\A (?: \+ | 00? ) [1-9]{2,6} \s*? [/-]? \s*? [0-9]{4,12} \z}x ){
         $return = 1;
     }
     

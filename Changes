@@ -1,6 +1,10 @@
 Revision history for Data::Validate::WithYAML::Plugin::Phone
 ============================================================
 
+0.04    2014-06-24
+
+        * improved regex
+
 0.03    2013-10-24
 
         * use PodWeaver
