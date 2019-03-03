@@ -4,6 +4,7 @@ use warnings;
 use strict; 
 
 use Carp;
+use Try::Tiny;
 
 # ABSTRACT: Plugin to check Phone numbers (basic check)
 
@@ -40,9 +41,25 @@ test.yml
 =cut
 
 sub check {
-    my ($class, $value) = @_;
+    my ($class, $value, $config) = @_;
     
     croak "no value to check" unless defined $value;
+
+    if ( $config && $config->{country} ) {
+        my $country = $config->{country};
+        my $return = 0;
+        my $number;
+
+        require 'Number/Phone.pm';
+
+        try {
+            $number = Number::Phone->new( $country, $value );
+        };
+
+        $return = 1 if $number;
+
+        return $return;
+    }
     
     my $return = 0;
     $value =~ s/\s//g;
