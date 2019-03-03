@@ -8,7 +8,7 @@ Data::Validate::WithYAML::Plugin::Phone - Plugin to check Phone numbers (basic c
 
 # VERSION
 
-version 0.04
+version 0.05
 
 # SYNOPSIS
 
