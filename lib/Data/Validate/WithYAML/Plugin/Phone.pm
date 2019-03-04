@@ -9,7 +9,7 @@ use Scalar::Util qw(blessed);
 
 # ABSTRACT: Plugin to check Phone numbers (basic check)
 
-our $VERSION = '0.05';
+our $VERSION = '0.06';
 
 =head1 SYNOPSIS
 
