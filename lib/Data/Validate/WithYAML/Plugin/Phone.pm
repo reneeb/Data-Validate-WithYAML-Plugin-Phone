@@ -5,6 +5,7 @@ use strict;
 
 use Carp;
 use Try::Tiny;
+use Scalar::Util qw(blessed);
 
 # ABSTRACT: Plugin to check Phone numbers (basic check)
 
@@ -49,14 +50,21 @@ sub check {
         my $country = $config->{country};
         my $return = 0;
         my $number;
+        my $error;
 
         require 'Number/Phone.pm';
 
         try {
             $number = Number::Phone->new( $country, $value );
+
+            return if !blessed $number;
+
+            $error = 'No support for ' . $country if $number->isa('Number::Phone::StubCountry');
+
+            $return = 1;
         };
 
-        $return = 1 if $number;
+        croak $error if $error;
 
         return $return;
     }
