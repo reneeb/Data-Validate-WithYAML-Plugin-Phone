@@ -43,4 +43,12 @@ for my $check ( @blacklist ){
     ok( !$retval, "test: $check" );
 }
 
+#my $de_nr_ok = $module->check('+4917712346799', { country => 'DE' } );
+#is $de_nr_ok, 1;
+
+my $uk_nr_nok = $module->check('+4917712346799', { country => 'UK' } );
+is $uk_nr_nok, 0;
+
+
+
 done_testing();
